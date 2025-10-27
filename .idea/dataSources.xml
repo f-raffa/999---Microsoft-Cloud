@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlserver://synapse-all-labs-ws-ondemand.sql.azuresynapse.net:1433;database=aquarius_refined_staging</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="Microsoft SQL Server - @sqlmi-edwcore-ixm-prod.public.d8a8653a4549.database.windows.net" uuid="30e81c67-7a3d-46ac-bdba-e2ac3e623fc5">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://sqlmi-edwcore-ixm-prod.public.d8a8653a4549.database.windows.net:3342</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

@@ -1,0 +1,40 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dataLakeAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Nome dello storage account esistente"
+      }
+    },
+    "containerName": {
+      "type": "string",
+      "metadata": {
+        "description": "Nome del container Blob da creare"
+      }
+    },
+    "publicAccess": {
+      "type": "string",
+      "defaultValue": "None",
+      "allowedValues": [
+        "Blob",
+        "Container",
+        "None"
+      ],
+      "metadata": {
+        "description": "Livello di accesso pubblico al container"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2023-01-01",
+      "name": "[format('{0}/default/{1}', parameters('dataLakeAccountName'), parameters('containerName'))]",
+      "properties": {
+        "publicAccess": "[parameters('publicAccess')]"
+      }
+    }
+  ]
+}
