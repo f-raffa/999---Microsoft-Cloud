@@ -1,6 +1,15 @@
+USE edwcore_external;
+
+
+
 --External Tables
-DROP EXTERNAL TABLE aquarius_refined.contracts_landing;
-CREATE EXTERNAL TABLE aquarius_refined.contracts_landing (
+IF EXISTS ( SELECT *
+              FROM INFORMATION_SCHEMA.TABLES
+             WHERE TABLE_NAME = 'contracts'
+               AND TABLE_SCHEMA = 'aquarius_refined_landing' )
+    DROP EXTERNAL DATA SOURCE DefaultLakeDataSource;
+
+CREATE EXTERNAL TABLE aquarius_refined_landing.contracts (
     Row_Hash                       binary(32),
     strGUID                        varchar(25),
     contract_no                    varchar(25),
@@ -201,14 +210,15 @@ CREATE EXTERNAL TABLE aquarius_refined.contracts_landing (
     In_Use_By_Form                 varchar(100),
     Split_From                     varchar(25),
     Inherit_Assay_From             varchar(25),
-    StructField("PaymentCode", StringType()),
-    StructField("BackToBack", BooleanType()),
-    StructField("MaterialAdverseChange", BooleanType()),
-    StructField("Margining", BooleanType()),
+    PaymentCode                    varchar(25),
+    BackToBack                     bit,
+    MaterialAdverseChange          bit,
+    Margining                      bit,
+    SYS_CHANGE_OPERATION           char(1),
     extractedAt                    datetime
 )
   WITH (
-    LOCATION = 'aquarius_refined_staging.db/contracts_landing/',
+    LOCATION = 'aquarius_refined_staging.db/contracts/',
     DATA_SOURCE = DefaultLakeDataSource,
     FILE_FORMAT = ParquetFileFormat
 );
@@ -216,8 +226,13 @@ CREATE EXTERNAL TABLE aquarius_refined.contracts_landing (
 
 
 --External Tables
-DROP EXTERNAL TABLE aquarius_refined.contracts_staging;
-CREATE EXTERNAL TABLE aquarius_refined.contracts_staging (
+IF EXISTS ( SELECT *
+              FROM INFORMATION_SCHEMA.TABLES
+             WHERE TABLE_NAME = 'contracts'
+               AND TABLE_SCHEMA = 'aquarius_refined_staging' )
+    DROP EXTERNAL DATA SOURCE DefaultLakeDataSource;
+
+CREATE EXTERNAL TABLE aquarius_refined_staging.contracts (
     Row_Hash                       binary(32),
     strGUID                        varchar(25),
     contract_no                    varchar(25),
@@ -418,14 +433,15 @@ CREATE EXTERNAL TABLE aquarius_refined.contracts_staging (
     In_Use_By_Form                 varchar(100),
     Split_From                     varchar(25),
     Inherit_Assay_From             varchar(25),
-    PaymentCode              ", StringType()),
-    BackToBack               ", BooleanType()),
-    MaterialAdverseChange    ", BooleanType()),
-    Margining                ", BooleanType()),
+    PaymentCode                    varchar(25),
+    BackToBack                     bit,
+    MaterialAdverseChange          bit,
+    Margining                      bit,
+    SYS_CHANGE_OPERATION           char(1),
     minimumExtractedAt             datetime
 )
   WITH (
-    LOCATION = 'aquarius_refined_staging.db/contracts_staging/',
+    LOCATION = 'aquarius_refined_staging.db/contracts/',
     DATA_SOURCE = DefaultLakeDataSource,
     FILE_FORMAT = ParquetFileFormat
 );
