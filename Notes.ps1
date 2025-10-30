@@ -1,7 +1,7 @@
-Connect-AzAccount -Tenant "bfcc27e6-aeae-460b-a71c-0e532f5d2555" -Subscription "010b2eb9-a8b8-48b5-a0d9-f0a65850eab0" -UseDeviceAuthentication
+Connect-AzAccount -Tenant "bfcc27e6-aeae-460b-a71c-0e532f5d2555" -Subscription "010b2eb9-a8b8-48b5-a0d9-f0a65850eab0" -UseDeviceAuthentication  #Personal
 
 
-Connect-AzAccount -Tenant "203fd445-2bc2-4a4c-93b4-df007cf1dd40" -Subscription "2cb0b54b-87b9-4ac2-bf54-792a6d303a34" -UseDeviceAuthentication
+Connect-AzAccount -Tenant "203fd445-2bc2-4a4c-93b4-df007cf1dd40" -Subscription "2cb0b54b-87b9-4ac2-bf54-792a6d303a34" -UseDeviceAuthentication  #IXM
 
 11 - 31
 
@@ -23,15 +23,15 @@ Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $containerName 
     $month = $Matches[3]
     $day = $Matches[4]
 	$time_of_the_day = $Matches[5]
-	if ( ([int]$day -gt 10) -and ($tableName -eq 'Contracts') ) {
+	if ($tableName -eq 'Contracts') {
 		$file_storage_volume = [int]([int]$_.Length/(1024*1024))
 	    $total_storage_volume = $total_storage_volume + $file_storage_volume
 		$file_number = $file_number + 1
 	    # Write-Host $_.Name
-	    Write-Host "${time_of_the_day}: $tableName $file_storage_volume MB"
+	    Write-Host "$year$month${day}T${time_of_the_day}: $tableName $file_storage_volume MB"
 	}
 }
-Write-Host "$file_number for a total of $total_storage_volume MB"  # 23650 MB
+Write-Host "$file_number for a total of $total_storage_volume MB"  # 36549 MB
 
 
 
@@ -44,15 +44,15 @@ Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $containerName 
     $month = $Matches[3]
     $day = $Matches[4]
 	$time_of_the_day = $Matches[5]
-	if ( ([int]$day -gt 10) -and ($tableName -eq 'Contracts') ) {
+	if ($tableName -eq 'Contracts') {
 		$file_storage_volume = [int]([int]$_.Length/(1024*1024))
 	    $total_storage_volume = $total_storage_volume + $file_storage_volume
 		$file_number = $file_number + 1
 	    # Write-Host $_.Name
-	    Write-Host "${time_of_the_day}: $tableName $file_storage_volume MB"
+	    Write-Host "$year$month${day}T${time_of_the_day}: $tableName $file_storage_volume MB"
 	}
 }
-Write-Host "$file_number for a total of $total_storage_volume MB" # 19940 MB
+Write-Host "$file_number for a total of $total_storage_volume MB"  # 33329 MB
 
 
 
