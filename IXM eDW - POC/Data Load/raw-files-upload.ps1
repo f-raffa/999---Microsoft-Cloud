@@ -15,9 +15,9 @@ $storageContext = $storageAccount.Context
 
 
 
-Get-ChildItem "./2025/*.csv.gz" -recurse -File | Foreach-Object {
+Get-ChildItem "./2025/*.parquet" -recurse -File | Foreach-Object {
     Write-Host $_.FullName
-    $_.FullName -match 'dbo\.(.*?)_(\d{4})-(\d{2})-(\d{2})'
+    $file_name_split = $_.FullName -match 'dbo\.(.*?)_(\d{4})-(\d{2})-(\d{2})'
     $tableName = $Matches[1]
     $year = $Matches[2]
     $month = $Matches[3]
@@ -26,8 +26,8 @@ Get-ChildItem "./2025/*.csv.gz" -recurse -File | Foreach-Object {
     write-host "year:       $Year"
     write-host "month:      $Month"
     write-host "day:        $Day"
-	$destinationFileName = $_.Name.Replace(".csv.gz", ".json")
-    $blobPath = "Incremental/$tableName/year=$year/month=$month/$destinationFileName"
+	$destinationFileName = $_.Name.Replace(".csv.gz", "")
+    $blobPath = "Incremental/Parquet/$tableName/year=$year/month=$month/$destinationFileName"
     Set-AzStorageBlobContent -Context $storageContext -File $_.FullName -Container "$containerName" -Blob $blobPath -Force
     write-host "Content Uploaded"
 }

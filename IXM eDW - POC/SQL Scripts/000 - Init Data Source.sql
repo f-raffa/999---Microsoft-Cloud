@@ -6,13 +6,13 @@ USE edwcore_external;
 GO;
 
 
-CREATE SCHEMA aquarius_refined_landing;
-GO;
-CREATE SCHEMA aquarius_refined_staging;
-GO;
 CREATE SCHEMA aquarius_ldcustom_landing;
 GO;
 CREATE SCHEMA aquarius_ldcustom_staging;
+GO;
+CREATE SCHEMA aquarius_refined_landing;
+GO;
+CREATE SCHEMA aquarius_refined_staging;
 GO;
 CREATE SCHEMA core_vault;
 GO;
@@ -37,7 +37,7 @@ IF EXISTS ( SELECT *
     DROP EXTERNAL DATA SOURCE DefaultLakeDataSource;
 
 CREATE EXTERNAL DATA SOURCE [DefaultLakeDataSource]
-  WITH ( LOCATION = 'https://datalakexfqecgy.dfs.core.windows.net/files/synapse/workspaces/synapse-all-labs-ws/warehouse',
+  WITH ( LOCATION = 'https://synapsewarehousestorage.dfs.core.windows.net',
          CREDENTIAL = [DefaultLakeStorageCredentials] );
 
 

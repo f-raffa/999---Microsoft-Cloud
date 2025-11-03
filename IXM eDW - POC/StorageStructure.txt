@@ -1,0 +1,25 @@
+abfss://000-raw@synapsewarehousestorage.dfs.core.windows.net
+    ├── aquarius_ldcustom/
+        ├──full_snapshot
+        ├──incremental
+    ├── aquarius_refined/
+        ├──full_snapshot
+        ├──incremental
+
+	
+abfss://005-staging@synapsewarehousestorage.dfs.core.windows.net
+    ├── aquarius_ldcustom_landing.db
+    ├── aquarius_ldcustom_staging.db
+    ├── aquarius_refined_landing.db
+    └── aquarius_refined_staging.db
+
+
+abfss://010-core@synapsewarehousestorage.dfs.core.windows.net
+    ├── core_staging.db
+    ├── core_vault.db
+    ├── core_vault_enriched.db
+
+
+abfss://015-consumption@synapsewarehousestorage.dfs.core.windows.net
+    ├── consumption.db
+

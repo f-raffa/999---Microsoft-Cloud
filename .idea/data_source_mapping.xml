@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourcePerFileMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/59eb83f7-201e-4b6a-b047-8f6037fdd1ef/console.sql" value="59eb83f7-201e-4b6a-b047-8f6037fdd1ef" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/a842c801-124c-4fe5-ab22-b63ed3d470c3/console.sql" value="a842c801-124c-4fe5-ab22-b63ed3d470c3" />
     <file url="file://$PROJECT_DIR$/IXM eDW - POC/SQL Scripts/000 - Init Data Source.sql" value="59eb83f7-201e-4b6a-b047-8f6037fdd1ef" />
-    <file url="file://$PROJECT_DIR$/IXM eDW - POC/SQL Scripts/005 - AquariusRefined-Contracts.sql" value="59eb83f7-201e-4b6a-b047-8f6037fdd1ef" />
   </component>
 </project>

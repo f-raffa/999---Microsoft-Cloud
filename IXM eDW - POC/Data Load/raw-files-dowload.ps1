@@ -22,9 +22,9 @@ $months = (
 foreach ($month in $months) {
     $file_number = 0
     $total_storage_volume = 0
-    Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $containerName -Path "2025/$month/" -recurse | Where-Object { -not $_.IsDirectory -and $_.Name -like "*.csv.gz" } | Foreach-Object {
+    Get-AzDataLakeGen2ChildItem -Context $storageContext -FileSystem $containerName -Path "Parquet/2025/$month/" -recurse | Where-Object { -not $_.IsDirectory -and $_.Name -like "*.parquet" } | Foreach-Object {
         $remotePath = $_.Name
-        $file_name_split = $remotePath -match 'dbo\.(.*?)_(\d{4})-(\d{2})-(\d{2})T(.*?)\+00\.csv\.gz'
+        $file_name_split = $remotePath -match 'dbo\.(.*?)_(\d{4})-(\d{2})-(\d{2})T(.*?)\+00.*?\.parquet'
         $file_name = $Matches[0]
         $tableName = $Matches[1]
         $year = $Matches[2]
