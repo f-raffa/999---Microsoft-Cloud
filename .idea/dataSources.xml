@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Microsoft SQL Server - @sqlmi-edwcore-ixm-prod.public.d8a8653a4549.database.windows.net" uuid="30e81c67-7a3d-46ac-bdba-e2ac3e623fc5">
-      <driver-ref>sqlserver.ms</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://sqlmi-edwcore-ixm-prod.public.d8a8653a4549.database.windows.net:3342</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@synapse-all-labs-ws-ondemand.sql.azuresynapse.net" uuid="59eb83f7-201e-4b6a-b047-8f6037fdd1ef">
+    <data-source source="LOCAL" name="SQLUser@synapse-all-labs-ws-ondemand.sql.azuresynapse.net" uuid="59eb83f7-201e-4b6a-b047-8f6037fdd1ef">
       <driver-ref>synapse.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://synapse-all-labs-ws-ondemand.sql.azuresynapse.net:1433</jdbc-url>
+      <jdbc-url>jdbc:sqlserver://synapse-warehouse-ws-ondemand.sql.azuresynapse.net:1433;database=edwcore_external</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
